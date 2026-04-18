@@ -11,6 +11,7 @@ pipeline {
         NEXUS_CREDENTIALS = 'nexus-credentials'
         DOCKER_IMAGE = 'petclinic'
         DOCKER_TAG = "${BUILD_NUMBER}"
+	JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
     }
 
     stages {
@@ -25,7 +26,7 @@ pipeline {
         stage('Maven Build') {
             steps {
                 echo '========== Building with Maven =========='
-                sh 'mvn clean package -DskipTests -Dcheckstyle.skip=true'
+                sh 'mvn clean package -DskipTests -Dcheckstyle.skip=true -Dmaven.compiler.source=21 -Dmaven.compiler.target=21'
             }
         }
 

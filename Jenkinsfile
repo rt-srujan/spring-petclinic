@@ -49,7 +49,6 @@ pipeline {
                 echo '========== Skipping Quality Gate - SonarQube too slow on this instance =========='
                 }
             }
-        }
 
         stage('Upload to Nexus') {
             steps {

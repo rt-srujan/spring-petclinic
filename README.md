@@ -172,3 +172,49 @@ For additional details, please refer to the blog post [Hello DCO, Goodbye CLA: S
 ## License
 
 The Spring PetClinic sample application is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+
+
+
+
+
+
+
+
+
+
+
+
+# 🚀 CI/CD Pipeline — Spring Petclinic
+
+## Architecture
+
+GitHub → Jenkins → Maven → SonarQube → Nexus → Docker → Live App
+
+## Tools Used
+| Tool | Purpose |
+|------|---------|
+| Jenkins | CI/CD Automation Server |
+| Maven | Java Build Tool |
+| SonarQube | Code Quality Scanner |
+| Nexus | Artifact Repository |
+| Docker | Containerization |
+| Git/GitHub | Source Code Management |
+
+## Pipeline Stages
+1. Git Checkout — Pull code from GitHub
+2. Maven Build — Compile Java application
+3. Unit Tests — Run automated tests
+4. SonarQube Analysis — Scan code quality
+5. Quality Gate — Verify code standards
+6. Upload to Nexus — Store build artifact
+7. Docker Build — Create container image
+8. Docker Run — Deploy app on port 8090
+
+## Infrastructure
+- Jenkins Server: t2.medium (Ubuntu 22.04)
+- SonarQube Server: t2.medium (Ubuntu 22.04)
+- Nexus Server: t2.medium (Ubuntu 22.04)
+- Cloud: AWS (ap-south-1)
+
+## App Access
+http://<JENKINS_IP>:8090

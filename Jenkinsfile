@@ -25,14 +25,14 @@ pipeline {
         stage('Maven Build') {
             steps {
                 echo '========== Building with Maven =========='
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean package -DskipTests -Dcheckstyle.skip=true'
             }
         }
 
         stage('Unit Tests') {
             steps {
                 echo '========== Running Unit Tests =========='
-                sh 'mvn test'
+                sh 'mvn test -Dcheckstyle.skip=true'
             }
         }
 

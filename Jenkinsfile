@@ -58,7 +58,7 @@ pipeline {
                     protocol: 'http',
                     nexusUrl: "${NEXUS_URL}",
                     groupId: 'org.springframework.samples',
-                    version: "${BUILD_NUMBER}",
+                    version: "4.0.0-SNAPSHOT",
                     repository: 'maven-snapshots',
                     credentialsId: "${NEXUS_CREDENTIALS}",
                     artifacts: [

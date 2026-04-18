@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven3'
-    }
+
 
     environment {
         SONAR_HOST_URL = 'http://http://13.201.172.136/:9000'
@@ -26,14 +24,14 @@ pipeline {
         stage('Maven Build') {
             steps {
                 echo '========== Building with Maven =========='
-                sh 'mvn clean package -DskipTests -Dcheckstyle.skip=true -Dmaven.compiler.source=21 -Dmaven.compiler.target=21'
+                sh '/usr/share/maven/bin/mvn clean package -DskipTests -Dcheckstyle.skip=true'
             }
         }
 
         stage('Unit Tests') {
             steps {
                 echo '========== Running Unit Tests =========='
-                sh 'mvn test -Dcheckstyle.skip=true'
+                sh '/usr/share/maven/bin/mvn test -Dcheckstyle.skip=true'
             }
         }
 
@@ -41,7 +39,7 @@ pipeline {
             steps {
                 echo '========== Scanning Code Quality =========='
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
+                    sh '/usr/share/maven/bin/mvn sonar:sonar'
                 }
             }
         }

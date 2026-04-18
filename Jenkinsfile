@@ -4,8 +4,8 @@ pipeline {
 
 
     environment {
-        SONAR_HOST_URL = 'http://13.201.172.136/:9000'
-        NEXUS_URL = '13.200.39.65/:8081'
+        SONAR_HOST_URL = 'http://13.201.172.136:9000'
+        NEXUS_URL = '13.200.39.65:8081'
         NEXUS_CREDENTIALS = 'nexus-credentials'
         DOCKER_IMAGE = 'petclinic'
         DOCKER_TAG = "${BUILD_NUMBER}"

@@ -4,8 +4,8 @@ pipeline {
 
 
     environment {
-        SONAR_HOST_URL = 'http://http://13.201.172.136/:9000'
-        NEXUS_URL = 'http://13.200.39.65/:8081'
+        SONAR_HOST_URL = 'http://13.201.172.136/:9000'
+        NEXUS_URL = '13.200.39.65/:8081'
         NEXUS_CREDENTIALS = 'nexus-credentials'
         DOCKER_IMAGE = 'petclinic'
         DOCKER_TAG = "${BUILD_NUMBER}"
@@ -68,7 +68,7 @@ pipeline {
                         [
                             artifactId: 'spring-petclinic',
                             classifier: '',
-                            file: "target/spring-petclinic-*.jar",
+                            file: "target/spring-petclinic-4.0.0-SNAPSHOT.jar",
                             type: 'jar'
                         ]
                     ]
@@ -95,6 +95,10 @@ pipeline {
     }
 
     post {
+        always {
+            sh 'docker system prune -f'
+            sh 'sudo rm -rf /var/lib/jenkins/workspace/petclinic-pipeline/target'
+        }
         success {
             echo '========== ✅ Pipeline Succeeded! App is Live! =========='
         }

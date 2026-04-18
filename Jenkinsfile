@@ -97,7 +97,7 @@ pipeline {
     post {
         always {
             sh 'docker system prune -f'
-            sh 'sudo rm -rf /var/lib/jenkins/workspace/petclinic-pipeline/target'
+            sh 'rm -rf /var/lib/jenkins/workspace/petclinic-pipeline/target'
         }
         success {
             echo '========== ✅ Pipeline Succeeded! App is Live! =========='
